@@ -581,6 +581,7 @@ echo %ur%5.) Steel Armor        %ur% 100000 %ur%
 echo %ur%6.) Knight's Armor     %ur% 500000 %ur%
 echo %lb%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%mb%%st%%st%%st%%st%%st%%st%%st%%st%%rb%
 echo.
+::theunknownbosser@gmail.com
 echo You currently have %armor%.
 echo.
 if %armor%==none (goto abuy)
