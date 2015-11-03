@@ -1,7 +1,7 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                ::READ ME::                                                     ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::
+::YOLO
 ::This is the game Legend. Not everything is perfect, so if you find a bug, please tell me about it! 
 ::
 ::You may contact me via email, at rcaproductionmaster@gmail.com
