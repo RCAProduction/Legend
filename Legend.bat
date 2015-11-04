@@ -212,6 +212,17 @@ echo.
 pause
 goto town
 
+:meowliz
+set kjhjsdf=v
+CLS
+set /p kjhjsdf="So you think you're smart, eh?"
+if %kjhjsdf%==Lindsey (goto meowlizz)
+CLS
+echo You have no idea who I am! Go away!
+echo.
+pause
+goto entered
+
 :meowlizz
 CLS
 echo You... You know me?
@@ -229,18 +240,6 @@ choice /c GBC /n /m ">"
 if %errorlevel%==3 (goto entered)
 set /a indeath=1
 goto entered
-
-:meowliz
-set kjhjsdf=v
-CLS
-set /p kjhjsdf="So you think you're smart, eh?"
-if %kjhjsdf%==Lindsey (goto meowlizz)
-CLS
-echo You have no idea who I am! Go away!
-echo.
-pause
-goto entered
-
 
 :login
 (
@@ -348,9 +347,30 @@ echo "               %ur%  |______ /     \ ___|___    |     %ur%
 echo "               %ur%                                   %ur%
 echo "               %lb%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%rb%
 echo.
-choice /c YN /m "Are you sure you want to exit? Progress will not be saved automatically."
+choice /c YN /m "Are you sure you want to exit?"
+if %errorlevel%==1 (
+ATTRIB -H settings.meow
+CLS
+choice /c YN /m "Save?"
 if %errorlevel%==2 (goto town)
-exit
+(
+echo %user% 
+echo %gen%
+echo %gold%
+echo %health%
+echo %weapon%
+echo %level%
+echo %kills%
+echo %armor%
+echo %defense%
+echo %bank%
+echo %kiss%
+echo %weplev%
+)>settings.meow
+ATTRIB +H settings.meow
+exit)
+if %errorlevel%==2 (goto town)
+
 
 :stats
 (
@@ -373,7 +393,7 @@ goto beginning
 ::::::::PLACES::::::::
 :forest
 CLS
-echo You enter the forest outside of the town. The townspeople talk of this place 
+echo You enter the forest outside of the town. The townspeople talk of this forest 
 echo only in hushed whispers... It is dangerous here, be careful.
 echo.
 echo 'L'ook around
@@ -730,7 +750,7 @@ color 84
 CLS
 echo A slender young man meets you at the door, and welcomes you!
 echo.
-echo The room is dark, lit by old lamps. Many people sit at tables
+echo The room is dark, lit by oil lamps. Many people sit at tables
 echo around the room, talking, eating, and drinking. The bar has a
 echo few open seats. In the corner, a lyre is being played.
 echo.
@@ -828,6 +848,8 @@ echo.
 echo You feel a bit weak, and lose a health.
 echo.
 pause
+set /a health=%health%-1
+if %health% LEQ 0 (goto lose)
 set barg=true
 goto inn
 :water
@@ -849,11 +871,21 @@ echo 'B'uy a room, and go to sleep
 echo 'L'eave
 echo.
 choice /c BL /n /m ">"
+if %errorlevel%==1 (goto buyroom)
 if %errorlevel%==2 (goto inn)
+:buyroom
+if %gold% LSS 250 (
+echo You do not have enough gold
+pause
+goto inn)
 set /a gold=%gold%-250
 set /a health=%health%+30
+pause
+echo You drift to sleep...
+echo.
+echo Your progress is saved, and you become refreshed.
+echo.
 ATTRIB -H settings.meow
-if %errorlevel%==2 (goto town)
 (
 echo %user% 
 echo %gen%
@@ -870,12 +902,8 @@ echo %weplev%
 )>settings.meow
 ATTRIB +H settings.meow
 CLS
-echo You drift to sleep...
-echo.
-echo Your progress is saved, and you become refreshed.
-echo.
-pause
-exit
+goto inn
+
 
 :it
 CLS
