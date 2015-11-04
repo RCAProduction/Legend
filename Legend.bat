@@ -6,7 +6,7 @@
 ::
 ::You may contact me via email, at rcaproductionmaster@gmail.com
 ::As the subject, ensure you have the word LEGEND.
-::theunknownbosser@gmail.com
+::
 ::This Version Includes:
 ::-Character Name
 ::-Character Gender
@@ -601,7 +601,6 @@ echo %ur%5.) Steel Armor        %ur% 100000 %ur%
 echo %ur%6.) Knight's Armor     %ur% 500000 %ur%
 echo %lb%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%st%%mb%%st%%st%%st%%st%%st%%st%%st%%st%%rb%
 echo.
-::theunknownbosser@gmail.com
 echo You currently have %armor%.
 echo.
 if %armor%==none (goto abuy)
@@ -791,7 +790,7 @@ if %errorlevel%==3 (goto ale)
 if %errorlevel%==4 (goto water)
 if %errorlevel%==5 (goto town)
 :rum
-if %health% LEQ 0 (goto lose)
+if %health%<=0 (goto lose)
 set /a gold=%gold%-10
 set /a health=%health%-1
 CLS
