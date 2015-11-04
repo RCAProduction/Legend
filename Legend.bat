@@ -791,6 +791,7 @@ if %errorlevel%==3 (goto ale)
 if %errorlevel%==4 (goto water)
 if %errorlevel%==5 (goto town)
 :rum
+if %health% LEQ 0 (goto lose)
 set /a gold=%gold%-10
 set /a health=%health%-1
 CLS
